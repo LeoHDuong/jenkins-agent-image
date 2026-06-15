@@ -46,4 +46,11 @@ RUN mkdir -p /home/jenkins/.m2
 COPY settings.xml /home/jenkins/.m2/settings.xml
 RUN chown -R jenkins:jenkins /home/jenkins/.m2
 
+# Add GitHub to known hosts
+RUN mkdir -p /home/jenkins/.ssh && \
+    ssh-keyscan github.com >> /home/jenkins/.ssh/known_hosts && \
+    chown -R jenkins:jenkins /home/jenkins/.ssh && \
+    chmod 700 /home/jenkins/.ssh && \
+    chmod 600 /home/jenkins/.ssh/known_hosts
+
 USER jenkins
