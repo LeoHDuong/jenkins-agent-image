@@ -4,8 +4,7 @@ USER root
 
 # System dependencies
 RUN apt-get update && apt-get install -y \
-    openjdk-11-jdk \
-    openjdk-21-jdk \
+    openjdk-17-jdk \
     maven \
     curl \
     wget \
